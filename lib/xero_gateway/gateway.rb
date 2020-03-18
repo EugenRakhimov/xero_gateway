@@ -681,11 +681,11 @@ module XeroGateway
       create_or_save = nil
       if invoice.invoice_id.nil?
         # Create new invoice record.
-        response_xml = http_put(@client, "#{@xero_url}/Invoices", request_xml, {})
+        response_xml = http_put(@client, "#{@xero_url}/Invoices?unitdp=4", request_xml, {})
         create_or_save = :create
       else
         # Update existing invoice record.
-        response_xml = http_post(@client, "#{@xero_url}/Invoices", request_xml, {})
+        response_xml = http_post(@client, "#{@xero_url}/Invoices?unitdp=4", request_xml, {})
         create_or_save = :save
       end
 
